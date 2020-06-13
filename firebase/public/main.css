@@ -1,3 +1,13 @@
+h1 {
+	font-family: adobe-garamond-pro, serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+p {
+font-family: 'Noto Sans JP', sans-serif;
+}
+
 .blm-card {
 	background-color: #95d3fb;
 }
@@ -19,10 +29,6 @@
 	}
 }
 
-p {
-font-family: 'Noto Sans JP', sans-serif;
-}
-
 .navbar {
 	height: 80px;
 	position: relative;
@@ -36,10 +42,4 @@ font-family: 'Noto Sans JP', sans-serif;
 
 .navbar-brand img {
 	width: 60px;
-}
-
-h1 {
-	font-family: adobe-garamond-pro, serif;
-	font-weight: 700;
-	font-style: normal;
 }
