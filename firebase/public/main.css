@@ -1,0 +1,39 @@
+.blm-card {
+	height: 600px;
+	background-color: #95d3fb;
+}
+
+.local-card {
+	background-color: #f98989;
+}
+
+.blm-photo {
+    padding-top: 20px;
+	height: 400px;
+}
+
+.local-photo {
+    padding-top: 20px;
+	height: 300px;
+}
+
+.navbar {
+	height: 80px;
+	position: relative;
+}
+.navbar-brand {
+	position: absolute;
+	left: 50%;
+	margin-left: -30px !important; /* 50% of logo width */
+	display: block;
+}
+
+.navbar-brand img {
+    width: 60px;;
+}
+
+h1 {
+	font-family: adobe-garamond-pro, serif;
+	font-weight: 700;
+	font-style: normal;
+}
