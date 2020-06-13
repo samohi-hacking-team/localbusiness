@@ -13,5 +13,8 @@
         "matches": ["http://*/*", "https://*/*"],
         "js": ["jquery.js", "main.js"]
         }
-    ]
+    ],
+
+    "web_accessible_resources": ["0.png","1.png"]
+
   }
