@@ -1,0 +1,6 @@
+  {
+    "name": "Local Business",
+    "version": "1.0",
+    "description": "An extension that puts a badge on locally owned and black owned businesses. These businesses have been hit hard by the COVID-19 pandemic and allowing consumers to see easily find these businesses can give them a helping hand.",
+    "manifest_version": 2
+  }
