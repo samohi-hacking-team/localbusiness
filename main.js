@@ -1,12 +1,10 @@
 //Etsy BLM Integration
 
 //check against etsyBLM.json
-if (true) {
-    $(".listing-link").parent.hide();
-}
-window.onload = function() {
-    document.write('Hello world');
-    this.console.log("hello michelle");
-}
+$( ".wt-list-unstyled" ).each(function( index ) {
+  console.log( index + ": " + $( this ).text().replace(/\s/g,'') );
+});
+
+console.log("hello world");
 
 $("body").append('Test');
