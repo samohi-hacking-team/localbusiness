@@ -19,6 +19,10 @@
 	}
 }
 
+p {
+font-family: 'Noto Sans JP', sans-serif;
+}
+
 .navbar {
 	height: 80px;
 	position: relative;
