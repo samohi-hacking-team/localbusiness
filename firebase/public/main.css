@@ -1,5 +1,4 @@
 .blm-card {
-	height: 600px;
 	background-color: #95d3fb;
 }
 
@@ -7,14 +6,17 @@
 	background-color: #f98989;
 }
 
-.blm-photo {
-    padding-top: 20px;
-	height: 400px;
-}
+@media (min-width: 768px) {
+	.blm-photo {
+		object-fit: contain;
+		height: 400px;
+	}
 
-.local-photo {
-    padding-top: 20px;
-	height: 300px;
+	.local-photo {
+		object-fit: contain;
+		height: 300px;
+		width: auto;
+	}
 }
 
 .navbar {
@@ -29,7 +31,7 @@
 }
 
 .navbar-brand img {
-    width: 60px;;
+	width: 60px;
 }
 
 h1 {
