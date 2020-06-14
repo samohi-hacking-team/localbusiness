@@ -8,10 +8,8 @@ function addBadges(x){
 	text= $(x).text();
 	$(x).addClass("stay-local-badged");
 	post("https://us-central1-local-businesss.cloudfunctions.net/checkBusiness",{url: text}).then((o) => o.json()).then(function(list){
-		console.log(list)
 		if (list.exists){
 			if (list.categories.includes("BLM")){
-				console.log("blm")
 				$(x).after('<img src="'+chrome.runtime.getURL("0.png")+'" style="width:2em;height:2em;vertical-align:middle;float:right">');
 			}
 		}
@@ -19,7 +17,6 @@ function addBadges(x){
 }
 
 url = window.location.href;
-console.log(url);
 if (url.match(/https\:\/\/www\.etsy\.com\/.*/)){
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
