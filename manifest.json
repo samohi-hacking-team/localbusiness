@@ -1,11 +1,20 @@
   {
-    "name": "Local Business",
+    "name": "Stay Local",
     "version": "1.0",
     "description": "An extension that puts a badge on locally owned and black owned businesses. These businesses have been hit hard by the COVID-19 pandemic and allowing consumers to see easily find these businesses can give them a helping hand.",
     "manifest_version": 2,
 
     "background": {
     "page": "background.html"
+    },
+
+    "page_action": {
+      "default_icon": {
+        "16": "images/logo16.png",
+        "32": "images/logo32.png",
+        "48": "images/logo48.png",
+        "128": "images/logo128.png"
+        }
     },
 
     "content_scripts": [
@@ -16,5 +25,4 @@
     ],
 
     "web_accessible_resources": ["0.png","1.png"]
-
   }

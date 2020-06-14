@@ -30,16 +30,17 @@ font-family: 'Noto Sans JP', sans-serif;
 }
 
 .navbar {
+    font-family: 'Noto Sans JP', sans-serif;
 	height: 80px;
 	position: relative;
 }
 .navbar-brand {
 	position: absolute;
 	left: 50%;
-	margin-left: -30px !important; /* 50% of logo width */
+	margin-left: -35px !important; /* 50% of logo width */
 	display: block;
 }
 
 .navbar-brand img {
-	width: 60px;
+	width: 70px;
 }
