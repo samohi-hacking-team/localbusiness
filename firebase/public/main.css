@@ -1,4 +1,4 @@
-h1 {
+h1, h2, h3 {
 	font-family: adobe-garamond-pro, serif;
 	font-weight: 700;
 	font-style: normal;
@@ -31,7 +31,7 @@ font-family: 'Noto Sans JP', sans-serif;
 
 .navbar {
     font-family: 'Noto Sans JP', sans-serif;
-	height: 80px;
+	height: 90px;
 	position: relative;
 }
 .navbar-brand {
@@ -44,3 +44,49 @@ font-family: 'Noto Sans JP', sans-serif;
 .navbar-brand img {
 	width: 70px;
 }
+
+.team {
+	background-color: #F7D653;
+}
+
+@media (min-width: 768px) {
+.team-card img {
+	height: 500px;
+	object-fit: contain;
+	margin-bottom: 0;
+}
+}
+
+.team-card img {
+	height: 300px;
+	margin-bottom: 8px;
+}
+
+.team-card h3 {
+	margin-bottom: 0;
+}
+
+.team-card p {
+	padding-bottom: 0;
+	margin-bottom: 8px;
+	color: darkslategray;
+}
+
+.team-card a:link {
+	color: black;
+}
+
+.team-card a:visited {
+	color: black;
+}
+.team-card a:hover {
+	color: darkslategray;
+}
+.team-card a:active {
+	color: black;
+}
+
+.team-card i {
+	padding: 0 5px;
+}
+
