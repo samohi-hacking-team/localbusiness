@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  db:
+    container_name: etsyShopDB
+    image: postgres
+    hostname: db
+    environment:
+      GET_HOST_FROM: dns
+      POSTGRES_DB: dev
+      POSTGRES_USER: postgres-dev
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - 5432:5432
+    networks:
+      - etsyshops
+
+  webserver:
+    container_name: webserver
+    image: theswerd/webserver:v1
+    hostname: webserver
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      GET_HOSTS_FROM: dns
+    networks:
+      - etsyshops
+    volumes:
+      - .:/go/src/webserver
+    ports:
+      - 8080:8080
+
+    depends_on:
+      - db
+    links:
+      - db
+    labels:
+      kompose.service.type: LoadBalancer
+
+networks:
+  etsyshops:
+    driver: bridge
