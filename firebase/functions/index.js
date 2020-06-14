@@ -25,27 +25,51 @@ exports.addToFirestore = functions.https.onRequest((req, res) => {
 });
 
 exports.checkBusiness = functions.https.onRequest(async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "*");
-  let url = req.body.url;
-  url = url.replace("https://", "");
-  let doc = await admin.firestore().collection("shops").doc(url).get();
+  try {
+    res.set("Access-Control-Allow-Origin", "*");
+    let url =  req.body.url;
+    let test = typeof req.body
+    console.log(req.body);
+    //url = url.replace("https://", "");
+    let doc = await admin.firestore().collection("shops").doc(url).get();
 
-  if (doc.exists) {
-    res.status().send({
-      exists: true,
-      blacklisted: doc.data().categories.includes("blacklist"),
-      categories: doc.data().categories,
-    });
-  } else {
-    res.status().send({
-      exists: false,
-    });
+    if (doc.exists) {
+      res.status(200).send({
+        exists: true,
+        blacklisted: doc.data().categories.includes("blacklist"),
+        categories: doc.data().categories,
+      });
+      //http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=microsoft&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback
+    } else {
+        
+      res.status(200).send({
+        exists: false,
+      });
+    }
+  } catch (error) {
+    console.log("ERRORRORO");
+    console.log(error)
+      return res.status(400).send("SMH KEN OHMAH GAWD")
   }
+});
+exports.checkLocalBusinessV2 = functions.https.onRequest(async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
+  let name = req.path.replace("/", "").trim();
+  let nameData = await superagent
+    .get(
+      "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=" +
+        name +
+        "&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
+    )
+    .then((responseYahoo) => res.send(responseYahoo.body));
 });
 
 exports.checkLocalBusiness = functions.https.onRequest(async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+
   let name = req.body.name;
-  return res.status().send(!restaurants.includes(name));
+  return res.status(200).send(!restaurants.includes(name));
 });
 
 const restaurants = [
@@ -125,7 +149,8 @@ const restaurants = [
   "Baskin-Robbins",
   "Yard House",
   "Bonefish Grill",
-  "Rank","Chain",
+  "Rank",
+  "Chain",
   "White Castle",
   "Tropical Smoothie Cafe",
   "Dave & Buster's",
@@ -136,8 +161,10 @@ const restaurants = [
   "Perkins Restaurant & Bakery",
   "Freddy's Frozen Custard & Steakburgers",
   "Checkers Drive-In Restaurants",
-  "","Noodles & Company",
-  "","Einstein Bros. Bagels",
+  "",
+  "Noodles & Company",
+  "",
+  "Einstein Bros. Bagels",
   "Jamba",
   "Portillo's",
   "Boston Market",
@@ -190,7 +217,8 @@ const restaurants = [
   "Bar Louie",
   "Sarku Japan",
   "Old Chicago Pizza & Taproom",
-  "Rally's Hamburgers","Torchy's Tacos",
+  "Rally's Hamburgers",
+  "Torchy's Tacos",
   "Pizza Ranch",
   "Pappadeaux Seafood Kitchen",
   "Braum's Ice Cream & Dairy Stores",
