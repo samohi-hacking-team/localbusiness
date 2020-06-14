@@ -56,13 +56,13 @@ exports.checkLocalBusinessV2 = functions.https.onRequest(async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
   let name = req.path.replace("/", "").trim();
+  name = 'facebook';
   let nameData = await superagent
     .get(
-      "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=" +
-        name +
-        "&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
+      "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=$name&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
     )
     .then((responseYahoo) => res.send(responseYahoo.body));
+        console.log(nameData);
 });
 
 exports.checkLocalBusiness = functions.https.onRequest(async (req, res) => {
