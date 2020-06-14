@@ -1,28 +1,21 @@
 //Etsy BLM Integration
 
-
-//Each of these functions will eventually hold code that checks them w the api. for now it just puts each badge on each listing.
-methods = [
-function(username){
-	return true;
+function post(url, data) {
+  return fetch(url, {method: "POST",headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
 }
-]
-
-function getBadges(username){
-	badges = "";
-	for (var i = 0; i < methods.length; i++) {
-		if(methods[i](username)){
-			badges+=' <img src="'+chrome.runtime.getURL(''+i+'.png')+'" style="width:2em;height:2em;vertical-align:middle;float:right">';
-		}
-	}
-	return badges;
-}
-
 
 function addBadges(x){
 	text= $(x).text();
 	$(x).addClass("stay-local-badged");
-	$(x).after(getBadges(text));
+	post("https://us-central1-local-businesss.cloudfunctions.net/checkBusiness",{url: text}).then((o) => o.json()).then(function(list){
+		console.log(list)
+		if (list.exists){
+			if (list.categories.includes("BLM")){
+				console.log("blm")
+				$(x).after('<img src="'+chrome.runtime.getURL("0.png")+'" style="width:2em;height:2em;vertical-align:middle;float:right">');
+			}
+		}
+	});
 }
 
 url = window.location.href;
