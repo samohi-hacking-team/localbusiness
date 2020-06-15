@@ -21,7 +21,7 @@ exports.addToFirestore = functions.https.onRequest((req, res) => {
     site: site,
     categories: categories,
   });
-  res.status().send("success");
+  res.status(200).send("success");
 });
 
 exports.checkBusiness = functions.https.onRequest(async (req, res) => {

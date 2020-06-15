@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:web_scrapers/etsyBLM2.dart';
 
 import 'etsyBLM.dart';
 
 void extractData() async {
-  var etsyBLM = (await estyBLM());
+  var etsyBLM = (await estyBLM2());
   print(etsyBLM.length);
   print(jsonEncode(etsyBLM.map((e) {
     return e.toJSON();
